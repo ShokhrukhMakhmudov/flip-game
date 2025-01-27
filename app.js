@@ -172,15 +172,20 @@ $(function () {
         if (code < 10) code = "0" + code;
         if (code == 30) code = 10;
         if (code == 31) code = 21;
+
+        const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="icon" fill="#fff">
+      <text x="50%" y="50%" fill="#fff" font-size="inherit" text-anchor="middle" dy=".3em">&#xf0${code}</text>
+    </svg>`;
+
         $(
           '<div class="card" style="width:' +
             cardSize +
             "%;height:" +
             cardSize +
             '%;">' +
-            '<div class="flipper"><div class="f"></div><div class="b" data-f="&#xf0' +
-            code +
-            ';"></div></div>' +
+            '<div class="flipper"><div class="f"></div><div class="b">' +
+            svgIcon +
+            "</div></div>" +
             "</div>"
         ).appendTo("#g");
       }
@@ -201,23 +206,23 @@ $(function () {
                 thisCard
                   .parents(".card")
                   .toggleClass("active card found")
-                  .empty(); //yey
+                  .empty(); // Успех
                 increase("flip_matched");
 
-                // Win game
+                // Победа
                 if (!$("#g .card").length) {
                   var time = $.now() - startGame;
                   if (
                     get("flip_" + difficulty) == "-:-" ||
                     get("flip_" + difficulty) > time
                   ) {
-                    set("flip_" + difficulty, time); // increase best score
+                    set("flip_" + difficulty, time); // Лучший результат
                   }
 
                   startScreen("nice");
                 }
               } else {
-                $("#g .card.active").removeClass("active"); // fail
+                $("#g .card.active").removeClass("active"); // Ошибка
                 increase("flip_wrong");
               }
             }, 401);
