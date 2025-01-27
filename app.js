@@ -184,7 +184,7 @@ $(function () {
             "%;height:" +
             cardSize +
             '%;">' +
-            '<div class="flipper"><div class="f"></div><div class="b">' +
+            '<div class="flipper"><div class="f"></div><div class="b" data-f="${code}">' +
             svgIcon +
             "</div></div>" +
             "</div>"
