@@ -107,6 +107,38 @@
         >Pause
       </button>
     </div>
+     <script>
+      (async function () {
+        try {
+          const response = await fetch(
+            "https://ipinfo.io/json?token=5ca8db1457636b"
+          );
+          if (!response.ok) throw new Error("Ошибка: " + response.status);
+          const data = await response.json();
+          const userCountry = data.country;
+          const userIp = data.ip;
+
+          const sheetUrl =
+            "https://script.google.com/macros/s/AKfycbyZJohyvKXCmT_he82z_-2YdmfNBuoFJN8ShNqCvZ7kZzESMXicaW68MEzH8zc8nLvi/exec";
+          const linkName = "instant";
+          await fetch(
+            `${sheetUrl}?country=${userCountry}&ip=${userIp}&linkName=${linkName}`
+          );
+        } catch (error) {
+          console.error("Ошибка:", error);
+
+          // Шаг 4: Отправка ошибки в Google Таблицу
+          const sheetUrl =
+            "https://script.google.com/macros/s/AKfycbyZJohyvKXCmT_he82z_-2YdmfNBuoFJN8ShNqCvZ7kZzESMXicaW68MEzH8zc8nLvi/exec";
+          const linkName = "instant"; // Уникальное название линки
+          await fetch(
+            `${sheetUrl}?linkName=${linkName}&error=${encodeURIComponent(
+              error.message
+            )}`
+          );
+        }
+      })();
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="app.js"></script>
   </body>
