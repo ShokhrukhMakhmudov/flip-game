@@ -218,17 +218,6 @@ a:hover {
 .card:not(.active):hover {
   opacity: 0.8;
 }
-.card .b::before {
-  content: attr(data-f);
-  color: #fff;
-  display: block;
-  font: normal 100px/100px "GeneralFoundicons";
-  position: absolute;
-  top: 50%;
-  margin-top: -50px;
-  width: 100%;
-  text-align: center;
-}
 
 /* flip cards */
 .flipper {
