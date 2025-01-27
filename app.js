@@ -174,7 +174,8 @@ $(function () {
         if (code == 31) code = 21;
 
         const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="icon" fill="#fff">
-      <text x="50%" y="70%" fill="#fff" font-size="inherit" text-anchor="middle"  dy=".3em">&#xf0${code}</text>
+        <circle cx="32" cy="32" r="30" fill="#EEE" stroke="#000" stroke-width="4"></circle>
+      <text x="50%" y="50%" fill="#000" font-size="inherit" text-anchor="middle"  dy=".3em">${code}</text>
     </svg>`;
 
         $(

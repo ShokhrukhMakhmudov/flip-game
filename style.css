@@ -385,9 +385,9 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #000;
   font-family: "GeneralFoundicons";
-  font-size: 50px;
+  font-size: 48px;
   font-style: normal;
   font-weight: normal;
   line-height: normal;
